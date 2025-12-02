@@ -1,0 +1,17 @@
+[theme]
+base = "dark"
+primaryColor = "#1f6feb"  # Bleu pour boutons/onglets
+backgroundColor = "#0e1117"  # Noir profond (fond app)
+secondaryBackgroundColor = "#1e2130"  # Gris foncé (tableaux, sidebar)
+textColor = "#fafafa"  # Blanc crème (texte principal)
+font = "sans serif"
+
+[theme.dark]
+primaryColor = "#1f6feb"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#1e2130"
+textColor = "#fafafa"
+
+[theme.dark.sidebar]
+backgroundColor = "#16181d"  # Sombre pour sidebar (fixe les fuites)
+textColor = "#fafafa"
