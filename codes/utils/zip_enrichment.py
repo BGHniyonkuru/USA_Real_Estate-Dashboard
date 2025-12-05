@@ -5,7 +5,7 @@ from pathlib import Path
 
 @st.cache_data
 def load_zip_to_city():
-    csv_path = Path(__file__).parent.parent/"data_extracted" / "data" / "geo" / "uszips.csv"
+    csv_path = "uszips.csv"
     
     if not csv_path.exists():
         st.error(f"Fichier introuvable : {csv_path}")
