@@ -6,10 +6,6 @@ from pathlib import Path
 @st.cache_data
 def load_zip_to_city():
     csv_path = "uszips.csv"
-    
-    if not csv_path.exists():
-        st.error(f"Fichier introuvable : {csv_path}")
-        st.stop()
 
     df = pd.read_csv(csv_path, usecols=['zip', 'city', 'state_id'], dtype={'zip': str})
     df['zip'] = df['zip'].str.zfill(5)
