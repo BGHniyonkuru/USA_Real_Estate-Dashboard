@@ -25,6 +25,18 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+.stTabs [data-baseweb="tab-list"] {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+</style>
+""", unsafe_allow_html=True)
 
 import Home
 import Dashboard

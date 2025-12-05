@@ -1,11 +1,9 @@
 # Home.py
 import streamlit as st
 from utils.user_profile import get_user_profile
-from utils.session import init_session_state
-init_session_state() 
+
 
 def run():
-    init_session_state()
     st.title("US Housing Affordability Dashboard")
     st.markdown("### M2 MIASHS – Open Data Project | December 2025")
     st.subheader("Ready to find out where you can actually afford to live?")

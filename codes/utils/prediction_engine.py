@@ -40,7 +40,7 @@ def income_needed_to_buy(
     monthly = calculate_monthly_payment(price, down_payment_pct, rate)
     return (monthly * 12) / 0.30
 
-@st.cache_data(ttl=3600)
+@st.cache_data(ttl=3600, show_spinner=False)
 def get_best_locations(
     salary=85000,
     goal="Buy",
@@ -49,13 +49,16 @@ def get_best_locations(
     down_payment_pct=0.20,
     mortgage_rate=0.07
 ):
-    salary = float(salary or 85000)
-    goal = str(goal or "Buy").strip()          # ← Protection
-    horizon = int(horizon or 5)
-    inflation_rate = float(inflation_rate or 0.04)
-    down_payment_pct = float(down_payment_pct or 0.20)
-    mortgage_rate = float(mortgage_rate or 0.07)
+    # FORCE LE RECALCUL À CHAQUE CHANGEMENT MÊME MINIME
+    salary = float(salary)
+    goal = str(goal).strip()
+    horizon = int(horizon)
+    inflation_rate = float(inflation_rate)
+    down_payment_pct = float(down_payment_pct)
+    mortgage_rate = float(mortgage_rate)
 
+    # CLÉ DE CACHE UNIQUE → on force avec tous les params
+    # (Streamlit le fait déjà, mais on s'assure)
     df = load_affordability_data().copy()
 
     # --- Enrichissement ---

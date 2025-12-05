@@ -2,12 +2,15 @@
 import streamlit as st
 from utils.data_loader import load_affordability_data
 from utils.prediction_engine import get_best_locations
-from utils.session import init_session_state
 from utils.user_profile import get_user_profile
 
 df_raw = load_affordability_data()
 
 def run():
+    if "user_salary" in st.session_state:
+        if st.session_state.user_salary < 30000:
+            st.session_state.user_salary = 30000
+
     get_user_profile()  
     goal = st.session_state.goal
 
@@ -29,11 +32,12 @@ def run():
     ) / 100
 
     df = get_best_locations(
-        salary=salary,
-        goal=goal,
-        horizon=horizon,
+        salary=st.session_state.user_salary,
+        goal=st.session_state.goal,
+        horizon=st.session_state.horizon,
         inflation_rate=inflation,
-        down_payment_pct=down_payment_pct
+        down_payment_pct=st.session_state.down_payment_pct,
+        mortgage_rate=st.session_state.mortgage_rate  # ← C’EST ÇA QUI MANQUAIT !
     )
 
     
