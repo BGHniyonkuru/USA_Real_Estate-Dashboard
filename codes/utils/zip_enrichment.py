@@ -5,8 +5,7 @@ from pathlib import Path
 
 @st.cache_data
 def load_zip_to_city():
-    csv_path = "uszips.csv"
-
+    csv_path = Path(__file__).parent.parent / "uszips.csv"
     df = pd.read_csv(csv_path, usecols=['zip', 'city', 'state_id'], dtype={'zip': str})
     df['zip'] = df['zip'].str.zfill(5)
     
